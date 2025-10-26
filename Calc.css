@@ -1,11 +1,17 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100..900;1,100..900&family=Winky+Rough:ital,wght@0,300..900;1,300..900&display=swap');
+
+* {
+    font-family: 'Lato', sans-serif;
+}
+
 #calc {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 10px;
     margin: auto;
-    width: 30vw;
+    width: 195px;
+    height: 369px;
     padding: 5px;
     border: 2px solid black;
 }
@@ -13,15 +19,42 @@
 #body {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 5px;
+    gap: 1px;
 }
 
 button {
-    width: 30px;
-    height: 40px;
-    font-size: 16px;
+    border: none;
+    width: 50px;
+    height: 60px;
+    font-size: 25px;
+    padding: 0;
+    box-sizing: border-box;
+    text-align: center;
+    border-radius: 3px;
 }
 
 input {
-    height: 30px;
+    border: none;
+    border-bottom: 1px solid white;
+    font-size: 28px;
+    margin: 0;
+    height: 70px;
+    width: 199px;
+    text-align: right;
 }
+
+:root {
+  --bg: #ECEFF1;
+  --panel: #FFFFFF;
+  --button: #B2DFDB;
+  --accent: #00796B;
+  --text: #263238;
+  --input: #ebf7f6;
+  --border: #B0BEC5;
+}
+
+body { background: var(--bg); }
+#calc.themes { background: var(--input); border: 2px solid var(--border); color: var(--text); }
+button.themes { background: var(--button); color: var(--text); }
+button.themes.spbtn { background: var(--accent); color: white; }
+input.themes { background: var(--input); color: var(--text); }
