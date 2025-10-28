@@ -4,6 +4,21 @@
     font-family: 'Lato', sans-serif;
 }
 
+aside {
+    width: 300px;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: -300px;
+    background-color: #FFFFFF;
+    border-right: 2px solid black;
+    transition: left 0.7s ease; /* Smooth transition */
+}
+
+aside.visible {
+    left: 0;
+}
+
 #calc {
     display: flex;
     flex-direction: column;
@@ -43,8 +58,11 @@ input {
     text-align: right;
 }
 
+body {
+    background-color: #ECEFF1;
+}
+
 :root {
-  --bg: #ECEFF1;
   --panel: #FFFFFF;
   --button: #B2DFDB;
   --accent: #00796B;
@@ -53,7 +71,6 @@ input {
   --border: #B0BEC5;
 }
 
-body { background: var(--bg); }
 #calc.themes { background: var(--input); border: 2px solid var(--border); color: var(--text); }
 button.themes { background: var(--button); color: var(--text); }
 button.themes.spbtn { background: var(--accent); color: white; }
