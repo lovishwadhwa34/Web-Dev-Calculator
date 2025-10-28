@@ -37,19 +37,21 @@ document.getElementById('AC').addEventListener('click', () => {
     document.querySelector('.input').value = inputstr;
 })
 
-// Toggle history panel
 document.getElementById('His').addEventListener('click', () => {
     const aside = document.querySelector('aside');
     aside.classList.toggle('visible');
-    
-    // Optional: Update history content
-    if (aside.classList.contains('visible')) {
-        // Show recent calculations
-        aside.innerHTML = '<h2 style="margin: 20px;">History</h2>' +
-            '<div style="padding: 15px;">' +
-            alloutput.map(calc => `<div style="margin-bottom: 10px">${calc} = ${eval(calc)}</div>`).join('') +
-            '</div>';
-    }
-});
 
+    if (aside.classList.contains('visible')) {
+        aside.innerHTML = `
+            <button id="close"><img src="Close white.png" alt="X"></button>
+            <h2 style="margin: 20px;">History</h2>
+            <div style="padding: 15px;">
+                ${alloutput.map(calc => `<div style="margin-bottom: 10px">${calc} = ${eval(calc)}</div>`).join('')}
+            </div>`;
+    }
+
+    document.getElementById('close')?.addEventListener('click', () => {
+        aside.classList.remove('visible');
+    });
+});
 
