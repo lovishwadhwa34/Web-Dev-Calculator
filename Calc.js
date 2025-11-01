@@ -15,6 +15,24 @@ document.querySelectorAll('.btn').forEach(btn => {
                     document.querySelector('.input').value = inputstr;
                 }
             }
+            else if (op === '%') {
+                let lastOpIndex = -1;
+                for (let i = inputstr.length - 1; i >= 0; i--) {
+                    if ('*/+-'.includes(inputstr[i])) {
+                        lastOpIndex = i;
+                        break;
+                    }
+                }
+                if (lastOpIndex === -1) {
+                    document.querySelector('.input').value += op
+                    inputstr = `(${inputstr}/100)`;
+                } else {
+                    document.querySelector('.input').value += op
+                    let beforeOp = inputstr.slice(0, lastOpIndex + 1);
+                    let lastNumber = inputstr.slice(lastOpIndex + 1);
+                    inputstr = `${beforeOp}(${lastNumber}/100)`;
+                }
+            }
             else {
                 document.querySelector('.input').value += op;
                 inputstr += op;
@@ -45,13 +63,20 @@ document.getElementById('His').addEventListener('click', () => {
         aside.innerHTML = `
             <button id="close"><img src="Close white.png" alt="X"></button>
             <h2 style="margin: 20px;">History</h2>
-            <div style="padding: 15px;">
+            <div id='hiscont' style="padding: 15px;">
                 ${alloutput.map(calc => `<div style="margin-bottom: 10px">${calc} = ${eval(calc)}</div>`).join('')}
-            </div>`;
+            </div>
+            <button id='Delete'><img src="Delete white.png"></button>`;
     }
 
-    document.getElementById('close')?.addEventListener('click', () => {
+    document.getElementById('close').addEventListener('click', () => {
         aside.classList.remove('visible');
+    })
+    document.getElementById('Delete').addEventListener('click', () => {
+        alloutput = []
+        document.getElementById('hiscont').innerHTML = ""
     });
 });
+
+
 
